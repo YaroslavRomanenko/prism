@@ -1,0 +1,5 @@
+# build folders
+build-debug/
+build-release/
+
+src/Engine/shaders/*.spv
