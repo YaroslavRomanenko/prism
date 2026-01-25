@@ -1,3 +1,5 @@
+#pragma once
+
 #include "Core/Window.hpp"
 #include "Engine/Engine.hpp"
 

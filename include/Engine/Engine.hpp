@@ -29,8 +29,29 @@ namespace prism {
             void createInstance();
 
             bool checkValidationLayerSupport();
+            std::vector<const char*> getRequiredExtensions();
+
+            static VKAPI_ATTR VkBool32 VKAPI_CALL debugCallback(
+                VkDebugUtilsMessageSeverityFlagBitsEXT messageSeverity,
+                VkDebugUtilsMessageTypeFlagsEXT messageType,
+                const VkDebugUtilsMessengerCallbackDataEXT* pCallbackData,
+                void* pUserData);
+
+            static VkResult CreateDebugUtilsMessengerEXT(VkInstance instance, 
+                const VkDebugUtilsMessengerCreateInfoEXT* pCreateInfo,
+                const VkAllocationCallbacks* pAllocator,
+                VkDebugUtilsMessengerEXT* pDebugMessenger);
+
+            static void DestroyDebugUtilsMessengerEXT(VkInstance instance, 
+                VkDebugUtilsMessengerEXT debugMessenger,
+                const VkAllocationCallbacks* pAllocator);
+
+            void setupDebugMessenger();
+
+            void populateDebugMessengerCreateInfo(VkDebugUtilsMessengerCreateInfoEXT& createInfo);
 
             Pipeline m_pipeline;
             VkInstance m_instance;
+            VkDebugUtilsMessengerEXT m_debugMessenger;
     };
 } // namespace prism
