@@ -52,6 +52,7 @@ namespace sai {
             void pickPhysicalDevice();
             void createLogicalDevice();
             void createSwapChain();
+            void createImageViews();
 
             bool checkValidationLayerSupport();
             std::vector<const char*> getRequiredExtensions();
@@ -94,6 +95,7 @@ namespace sai {
             VkQueue m_presentQueue;
             VkSwapchainKHR m_swapChain;
             std::vector<VkImage> m_swapChainImages;
+            std::vector<VkImageView> m_swapChainImageViews;
             VkFormat m_swapChainImageFormat;
             VkExtent2D m_swapChainExtent;
     };
