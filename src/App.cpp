@@ -4,7 +4,7 @@
 #include <iostream>
 
 namespace prism {
-    App::App() : m_window(WIDTH, HEIGHT, "Prism"), m_engine() {}
+    App::App() : m_window(WIDTH, HEIGHT, "Prism"), m_engine(m_window.getGLFWwindowPtr()) {}
 
     App::~App() {}
 
