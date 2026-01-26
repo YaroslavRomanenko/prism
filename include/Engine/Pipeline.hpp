@@ -3,7 +3,7 @@
 #include <string>
 #include <vector>
 
-namespace prism {
+namespace sai {
     class Pipeline {
         public:
             Pipeline(const std::string& vertFilepath, const std::string& fragFilepath);
@@ -14,4 +14,4 @@ namespace prism {
             void createGraphicsPipeline(const std::string& vertFilepath, const std::string& fragFilepath);
     };
 
-} // namespace prism
+} // namespace sai

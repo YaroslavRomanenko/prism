@@ -21,7 +21,7 @@ const std::vector<const char*> deviceExtensions = {
     const bool enableValidationLayers = true;
 #endif
 
-namespace prism {
+namespace sai {
     class Engine {
         public:
             Engine(GLFWwindow* window);
@@ -38,6 +38,12 @@ namespace prism {
                 bool isComplete() { return graphicsFamily.has_value() && presentFamily.has_value(); }
             };
 
+            struct SwapChainSupportDetails {
+                VkSurfaceCapabilitiesKHR capabilites;
+                std::vector<VkSurfaceFormatKHR> formats;
+                std::vector<VkPresentModeKHR> presentModes;
+            };
+
             void initVulkan();
 
             void createInstance();
@@ -45,6 +51,7 @@ namespace prism {
             void createSurface();
             void pickPhysicalDevice();
             void createLogicalDevice();
+            void createSwapChain();
 
             bool checkValidationLayerSupport();
             std::vector<const char*> getRequiredExtensions();
@@ -71,6 +78,11 @@ namespace prism {
 
             QueueFamilyIndices findQueueFamilies(VkPhysicalDevice device);
 
+            SwapChainSupportDetails querySwapChainSupport(VkPhysicalDevice device);
+            VkSurfaceFormatKHR chooseSwapSurfaceFormat(const std::vector<VkSurfaceFormatKHR>& availableFormats);
+            VkPresentModeKHR chooseSwapPresentMode(const std::vector<VkPresentModeKHR>& availablePresentModes);
+            VkExtent2D chooseSwapExtent(const VkSurfaceCapabilitiesKHR& capabilites);
+
             Pipeline m_pipeline;
             VkInstance m_instance;
             VkDebugUtilsMessengerEXT m_debugMessenger;
@@ -80,5 +92,9 @@ namespace prism {
             VkDevice m_device;
             VkQueue m_graphicsQueue;
             VkQueue m_presentQueue;
+            VkSwapchainKHR m_swapChain;
+            std::vector<VkImage> m_swapChainImages;
+            VkFormat m_swapChainImageFormat;
+            VkExtent2D m_swapChainExtent;
     };
-} // namespace prism
+} // namespace sai

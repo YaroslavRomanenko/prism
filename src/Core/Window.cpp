@@ -1,6 +1,6 @@
 #include "Core/Window.hpp"
 
-namespace prism {
+namespace winry {
     Window::Window(int width, int height, const std::string& title) : m_width(width), m_height(height), m_title(title) {
         glfwInit();
         glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
@@ -13,4 +13,4 @@ namespace prism {
         glfwDestroyWindow(m_window);
         glfwTerminate();
     }
-} // namespace prism
+} // namespace winry

@@ -3,21 +3,19 @@
 #include "Core/Window.hpp"
 #include "Engine/Engine.hpp"
 
-namespace prism {
-    class App {
-        public:
-            static constexpr int WIDTH = 800;
-            static constexpr int HEIGHT = 600;
+class App {
+    public:
+        static constexpr int WIDTH = 800;
+        static constexpr int HEIGHT = 600;
 
-            App();
-            ~App();
+        App();
+        ~App();
 
-            void run();
+        void run();
 
-        private:
-            void mainLoop();
+    private:
+        void mainLoop();
 
-            Window m_window;
-            Engine m_engine;
-    };
-} // namespace prism
+        winry::Window m_window;
+        sai::Engine m_engine;
+};

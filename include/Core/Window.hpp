@@ -7,7 +7,7 @@
 
 #include "Engine/Engine.hpp"
 
-namespace prism {
+namespace winry {
     class Window {
         public:
             Window(int width, int height, const std::string& title);
@@ -27,4 +27,4 @@ namespace prism {
             int m_width;
             int m_height;
     };
-} // namespace prism
+} // namespace winry

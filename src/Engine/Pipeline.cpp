@@ -4,7 +4,7 @@
 #include <stdexcept>
 #include <iostream>
 
-namespace prism {
+namespace sai {
     Pipeline::Pipeline(const std::string& vertFilepath, const std::string& fragFilepath) {
         createGraphicsPipeline(vertFilepath, fragFilepath);
     }
@@ -30,4 +30,4 @@ namespace prism {
         auto vertCode = readFile(vertFilepath);
         auto fragCode = readFile(fragFilepath);
     }
-} // namespace prism
+} // namespace sai

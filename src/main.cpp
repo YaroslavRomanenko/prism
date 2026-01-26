@@ -5,7 +5,7 @@
 #include <stdexcept>
 
 int main() {
-    prism::App app;
+    App app;
 
     try {
         app.run();
