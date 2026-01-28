@@ -21,7 +21,10 @@ const std::vector<const char*> deviceExtensions = {
     const bool enableValidationLayers = true;
 #endif
 
+
 namespace sai {
+    const std::string SHADER_PATH = "../src/Engine/shaders/";
+    
     class Engine {
         public:
             Engine(GLFWwindow* window);
@@ -53,6 +56,7 @@ namespace sai {
             void createLogicalDevice();
             void createSwapChain();
             void createImageViews();
+            void createGraphicsPipeline();
 
             bool checkValidationLayerSupport();
             std::vector<const char*> getRequiredExtensions();
@@ -84,6 +88,8 @@ namespace sai {
             VkPresentModeKHR chooseSwapPresentMode(const std::vector<VkPresentModeKHR>& availablePresentModes);
             VkExtent2D chooseSwapExtent(const VkSurfaceCapabilitiesKHR& capabilites);
 
+            VkShaderModule createShaderModule(const std::vector<char>& code);
+
             Pipeline m_pipeline;
             VkInstance m_instance;
             VkDebugUtilsMessengerEXT m_debugMessenger;
@@ -98,5 +104,6 @@ namespace sai {
             std::vector<VkImageView> m_swapChainImageViews;
             VkFormat m_swapChainImageFormat;
             VkExtent2D m_swapChainExtent;
+            VkPipelineLayout m_pipelineLayout;
     };
 } // namespace sai
