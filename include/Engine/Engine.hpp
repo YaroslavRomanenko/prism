@@ -56,6 +56,7 @@ namespace sai {
             void createLogicalDevice();
             void createSwapChain();
             void createImageViews();
+            void createRenderPass();
             void createGraphicsPipeline();
 
             bool checkValidationLayerSupport();
@@ -104,6 +105,8 @@ namespace sai {
             std::vector<VkImageView> m_swapChainImageViews;
             VkFormat m_swapChainImageFormat;
             VkExtent2D m_swapChainExtent;
+            VkRenderPass m_renderPass;
             VkPipelineLayout m_pipelineLayout;
+            VkPipeline m_graphicsPipeline;
     };
 } // namespace sai
