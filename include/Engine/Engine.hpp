@@ -58,6 +58,9 @@ namespace sai {
             void createImageViews();
             void createRenderPass();
             void createGraphicsPipeline();
+            void createFramebuffers();
+            void createCommandPool();
+            void createCommandBuffer();
 
             bool checkValidationLayerSupport();
             std::vector<const char*> getRequiredExtensions();
@@ -90,6 +93,7 @@ namespace sai {
             VkExtent2D chooseSwapExtent(const VkSurfaceCapabilitiesKHR& capabilites);
 
             VkShaderModule createShaderModule(const std::vector<char>& code);
+            void recordCommandBuffer(VkCommandBuffer commandBuffer, uint32_t imageIndex);
 
             Pipeline m_pipeline;
             VkInstance m_instance;
@@ -108,5 +112,8 @@ namespace sai {
             VkRenderPass m_renderPass;
             VkPipelineLayout m_pipelineLayout;
             VkPipeline m_graphicsPipeline;
+            std::vector<VkFramebuffer> m_swapChainFramebuffers;
+            VkCommandPool m_commandPool;
+            VkCommandBuffer m_commandBuffer;
     };
 } // namespace sai
