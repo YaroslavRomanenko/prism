@@ -14,5 +14,8 @@ void App::run() {
 void App::mainLoop() {
     while (!m_window.shouldClose()) {
         glfwPollEvents();
+        m_engine.drawFrame();
     }
+
+    vkDeviceWaitIdle(*m_engine.getDeivcePtr());
 }

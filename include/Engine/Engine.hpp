@@ -33,6 +33,10 @@ namespace sai {
             Engine(const Engine&) = delete;
             Engine &operator=(const Engine&) = delete;
 
+            VkDevice* getDeivcePtr() { return &m_device; }
+
+            void drawFrame();
+
         private:
             struct QueueFamilyIndices {
                 std::optional<uint32_t> graphicsFamily;
@@ -61,6 +65,7 @@ namespace sai {
             void createFramebuffers();
             void createCommandPool();
             void createCommandBuffer();
+            void createSyncObjects();
 
             bool checkValidationLayerSupport();
             std::vector<const char*> getRequiredExtensions();
@@ -115,5 +120,8 @@ namespace sai {
             std::vector<VkFramebuffer> m_swapChainFramebuffers;
             VkCommandPool m_commandPool;
             VkCommandBuffer m_commandBuffer;
+            VkSemaphore m_imageAvailableSemaphore;
+            VkSemaphore m_renderFinishedSemaphore;
+            VkFence m_inFlightFence;
     };
 } // namespace sai
